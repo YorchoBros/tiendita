@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U2_A3</title>
+    <link href="css/bootstrap-4.3.1.css" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 20px;
+            color: #271010;
+            font-style: normal;
+            font-weight: bold;
+            background-color: #FCFCFC;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .navigation a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #25445B;
+        }
+
+        .producto {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #fff;
+        }
+
+        .producto img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .producto h2 {
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        .producto p {
+            margin-bottom: 5px;
+        }
+
+        footer {
+            background-color: #fff;
+            padding: 20px 0;
+        }
+
+        .carrito {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+
+        .carrito h2 {
+            margin-bottom: 10px;
+        }
+
+        .carrito ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .carrito li {
+            margin-bottom: 5px;
+        }
+
+        .carrito .total {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var carrito = [];
+
+            function agregarAlCarrito(nombre, precio) {
+                carrito.push({ nombre: nombre, precio: precio });
+                actualizarCarrito();
+            }
+
+            function actualizarCarrito() {
+                var carritoContainer = document.getElementById('carrito-container');
+                carritoContainer.innerHTML = '';
+
+                var total = 0;
+                carrito.forEach(function(item) {
+                    total += item.precio;
+                    var li = document.createElement('li');
+                    li.textContent = item.nombre + ' - $' + item.precio.toFixed(2);
+                    carritoContainer.appendChild(li);
+                });
+
+                var totalElement = document.createElement('li');
+                totalElement.textContent = 'Total: $' + total.toFixed(2);
+                totalElement.classList.add('total');
+                carritoContainer.appendChild(totalElement);
+            }
+
+            // Ejemplo de agregar productos al carrito
+            agregarAlCarrito('Producto 1', 10);
+            agregarAlCarrito('Producto 2', 20);
+        });
+    </script>
+</head>
+<body>
+<table width="1562" height="834" border="0" align="center" cellpadding="10" cellspacing="0">
+  <tbody>
+    <tr>
+      <td height="97" colspan="3" align="center" valign="top" style="text-align: center">
+            <p><img src="Logo.png" width="1224" height="175" alt=""/></p>
+      </td>
+    </tr>
+    <tr>
+        <td width="250" height="595" align="left" valign="top">
+            <p><a href="index.html" target="_self"><img src="Inicio.png" width="60" height="60" alt=""/></a>Inicio</p>
+            <p><br></p>
+            <p><a href="catalogo.html" target="_self"><img src="Catalogo.png" width="60" height="60" alt=""/></a>Catálogo</p>
+            <p><br>
+            </p>
+            <p><a href="promociones.html" target="_self"><img src="Promociones.png" width="60" height="60" alt=""/></a>Promociones</p>
+            <p><br>
+            </p>
+            <p><a href="micuenta.html" target="_self"><img src="Mi Cuenta.png" width="60" height="60" alt=""/></a>Mi cuenta</p>
+            <p><br>
+            </p>
+            <p><a href="nosotros.html" target="_self"><img src="Nosotros.png" width="60" height="60" alt=""/></a>Nosotros</p>
+        </td>
+        <td width="1272" colspan="2" align="center" valign="top">
+            <div class="carrito">
+                <h2>Carrito de Compras</h2>
+                <ul id="carrito-container">
+                    <!-- Aquí se mostrarán los elementos del carrito -->
+                </ul>
+          </div>
+      </td>
+    </tr>
+    <tr>
+      <td height="36" colspan="3" align="center" valign="top" style="text-align: center">
+        <p>Jorge May &copy;2024 Todos los Derechos Reservados</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
